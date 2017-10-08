@@ -1,0 +1,42 @@
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/white_color"
+    android:elevation="4dp"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+  
+  
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginRight="10dp">
+    
+    <EditText
+        android:id="@+id/et_search_books"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/ib_search_button"
+        android:background="@android:color/transparent"
+        android:hint="@string/search_box_hint"
+        android:textCursorDrawable="@null"
+        />
+    
+    <ImageButton
+        android:id="@+id/ib_search_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="3dp"
+        android:src="@android:drawable/ic_search_category_default"
+        />
+  
+  
+  </RelativeLayout>
+
+
+</android.support.v7.widget.Toolbar>
