@@ -32,6 +32,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="3dp"
+        android:onClick="searchBooks"
         android:src="@android:drawable/ic_search_category_default"
         />
   

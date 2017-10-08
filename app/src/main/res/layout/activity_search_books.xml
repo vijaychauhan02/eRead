@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+  
+  <include
+      android:id="@+id/app_bar"
+      layout="@layout/app_bar"/>
+  
+  <LinearLayout
+      style="@style/box_layout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+    
+    <TextView
+        android:id="@+id/tv_no_result_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/welcome_to_read_eread"
+        android:textSize="18sp"/>
+  
+  </LinearLayout>
+
+
+</LinearLayout>
