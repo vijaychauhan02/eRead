@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.eread.R;
+import com.eread.SearchBooksViewCallBack;
+import com.eread.model.SearchBookResponse;
 import com.eread.presenter.BooksListPresenter;
 import com.eread.services.EReadServiceGenerator;
 
-public class SearchBooksActivity extends AppCompatActivity {
+public class SearchBooksActivity extends AppCompatActivity implements SearchBooksViewCallBack {
 
 
   BooksListPresenter booksListPresenter;
@@ -19,7 +21,7 @@ public class SearchBooksActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search_books);
 
-    booksListPresenter = new BooksListPresenter(EReadServiceGenerator.createService());
+    booksListPresenter = new BooksListPresenter(EReadServiceGenerator.createService(),this);
   }
 
 
@@ -28,4 +30,7 @@ public class SearchBooksActivity extends AppCompatActivity {
     booksListPresenter.searchBooks(searchEditText.getText().toString());
   }
 
+  @Override
+  public void renderBooks(SearchBookResponse searchBookResponse) {
+  }
 }
