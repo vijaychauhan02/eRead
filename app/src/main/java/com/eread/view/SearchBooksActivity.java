@@ -1,22 +1,31 @@
-package com.eread;
+package com.eread.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.eread.R;
+import com.eread.presenter.BooksListPresenter;
+import com.eread.services.EReadServiceGenerator;
 
 public class SearchBooksActivity extends AppCompatActivity {
+
+
+  BooksListPresenter booksListPresenter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search_books);
+
+    booksListPresenter = new BooksListPresenter(EReadServiceGenerator.createService());
   }
 
 
   public void searchBooks(View view) {
     EditText searchEditText = (EditText) findViewById(R.id.et_search_books);
-    Toast.makeText(this, searchEditText.getText().toString(), Toast.LENGTH_LONG).show();
+    booksListPresenter.searchBooks(searchEditText.getText().toString());
   }
+
 }
