@@ -1,7 +1,7 @@
 package com.eread;
 
-import com.eread.model.SearchBookResponse;
+import com.eread.model.SearchBooksResponse;
 
 public interface SearchBooksViewCallBack {
-  void renderBooks(SearchBookResponse searchBookResponse);
+  void renderBooks(SearchBooksResponse searchBookResponse);
 }

@@ -1,6 +1,6 @@
 package com.eread.services;
 
-import com.eread.model.SearchBookResponse;
+import com.eread.model.SearchBooksResponse;
 import com.eread.utils.Endpoints;
 
 import retrofit2.Call;
@@ -10,6 +10,6 @@ import retrofit2.http.Query;
 public interface EReadServices {
 
   @GET(Endpoints.SEARCH_BOOKS)
-  Call<SearchBookResponse> searchBooks(@Query("q") String query);
+  Call<SearchBooksResponse> searchBooks(@Query("q") String query);
 
 }

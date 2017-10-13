@@ -1,6 +1,6 @@
 package com.eread.model;
 
-public class Items {
+public class Item {
   public VolumeInfo getVolumeInfo() {
     return volumeInfo;
   }
