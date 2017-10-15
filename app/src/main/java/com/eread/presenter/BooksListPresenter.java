@@ -34,7 +34,7 @@ public class BooksListPresenter {
     return new Callback<SearchBooksResponse>() {
       @Override
       public void onResponse(Call<SearchBooksResponse> call, Response<SearchBooksResponse> response) {
-        Log.e("title is ", response.body().getItems().get(0).getVolumeInfo().getTitle());
+        Log.e("title is ", response.body().getBooks().get(0).getVolumeInfo().getTitle());
         searchBooksViewCallBack.renderBooks(response.body());
       }
 

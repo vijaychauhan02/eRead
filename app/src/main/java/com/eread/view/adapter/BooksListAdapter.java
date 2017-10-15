@@ -8,15 +8,15 @@ import android.view.ViewGroup;
 
 import com.eread.BR;
 import com.eread.R;
-import com.eread.model.Item;
+import com.eread.model.Book;
 
 import java.util.List;
 
 public class BooksListAdapter extends RecyclerView.Adapter<BooksListAdapter.BooksListViewHolder>{
 
-  private final List<Item> booksList;
+  private final List<Book> booksList;
 
-  public BooksListAdapter(List<Item> booksList) {
+  public BooksListAdapter(List<Book> booksList) {
     this.booksList = booksList;
   }
 
@@ -48,8 +48,8 @@ public class BooksListAdapter extends RecyclerView.Adapter<BooksListAdapter.Book
       this.binding = binding;
     }
 
-    void render(Item item) {
-      binding.setVariable(BR.book, item.getVolumeInfo());
+    void render(Book book) {
+      binding.setVariable(BR.book, book.getVolumeInfo());
     }
   }
 }

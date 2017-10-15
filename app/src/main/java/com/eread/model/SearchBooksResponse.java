@@ -1,14 +1,17 @@
 package com.eread.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class SearchBooksResponse {
 
-  public List<Item> getItems() {
-    return items;
+  public List<Book> getBooks() {
+    return books;
   }
 
-  List<Item> items;
+  @SerializedName("items")
+  List<Book> books;
 
 
 }
