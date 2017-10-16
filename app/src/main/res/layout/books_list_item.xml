@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
   
   <data>
     
@@ -9,19 +10,23 @@
   </data>
   
   <LinearLayout
-      android:layout_width="120dp"
-      android:layout_height="180dp"
+      style="@style/book_layout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="@dimen/book_margin_top"
       android:orientation="vertical">
     
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"/>
+        android:layout_height="@dimen/book_image_height"
+        app:imageUrl="@{book.imageLinks.thumbnail}"/>
     
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
         android:text="@{book.title}"/>
-  
   </LinearLayout>
 
 </layout>
