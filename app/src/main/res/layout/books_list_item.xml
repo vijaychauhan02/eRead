@@ -23,6 +23,7 @@
       <ImageView
           android:layout_width="match_parent"
           android:layout_height="@dimen/book_image_height"
+          android:scaleType="fitXY"
           app:imageUrl="@{book.imageLinks.thumbnail}"/>
       
       <TextView
