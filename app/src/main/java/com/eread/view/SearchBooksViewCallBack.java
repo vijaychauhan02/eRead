@@ -1,4 +1,4 @@
-package com.eread;
+package com.eread.view;
 
 import com.eread.model.SearchBooksResponse;
 

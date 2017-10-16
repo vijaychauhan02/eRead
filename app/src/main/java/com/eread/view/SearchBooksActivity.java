@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.eread.R;
-import com.eread.SearchBooksViewCallBack;
 import com.eread.model.SearchBooksResponse;
 import com.eread.presenter.BooksListPresenter;
 import com.eread.services.EReadServiceGenerator;

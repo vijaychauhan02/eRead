@@ -2,7 +2,7 @@ package com.eread.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.eread.SearchBooksViewCallBack;
+import com.eread.view.SearchBooksViewCallBack;
 import com.eread.model.SearchBooksResponse;
 import com.eread.services.EReadServices;
 
