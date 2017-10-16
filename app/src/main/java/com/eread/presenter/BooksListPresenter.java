@@ -1,7 +1,6 @@
 package com.eread.presenter;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.eread.SearchBooksViewCallBack;
 import com.eread.model.SearchBooksResponse;
@@ -34,13 +33,24 @@ public class BooksListPresenter {
     return new Callback<SearchBooksResponse>() {
       @Override
       public void onResponse(Call<SearchBooksResponse> call, Response<SearchBooksResponse> response) {
-        Log.e("title is ", response.body().getBooks().get(0).getVolumeInfo().getTitle());
-        searchBooksViewCallBack.renderBooks(response.body());
+//        Log.e("title is ", response.body().getBooks().get(0).getVolumeInfo().getTitle());
+        renderTheSearchResponse(response.body());
       }
 
       @Override
       public void onFailure(Call<SearchBooksResponse> call, Throwable t) {
       }
     };
+  }
+
+  private void renderTheSearchResponse(SearchBooksResponse response) {
+    searchBooksViewCallBack.hideWelcomeMessage();
+    if (response.getTotalBooks() == 0) {
+      searchBooksViewCallBack.hideSearchResult();
+      searchBooksViewCallBack.showNoResultsFoundMessage();
+    } else {
+      searchBooksViewCallBack.hideNoResultsFoundMessage();
+      searchBooksViewCallBack.renderBooks(response);
+    }
   }
 }

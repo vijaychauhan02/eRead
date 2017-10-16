@@ -37,9 +37,30 @@ public class SearchBooksActivity extends AppCompatActivity implements SearchBook
   @Override
   public void renderBooks(SearchBooksResponse searchBookResponse) {
     RecyclerView booksListView = (RecyclerView) findViewById(R.id.rc_books_list);
+    booksListView.setVisibility(View.VISIBLE);
     BooksListAdapter booksListAdapter = new BooksListAdapter(searchBookResponse.getBooks());
     GridLayoutManager gridLayoutManager = new GridLayoutManager(this, NUM_OF_BOOKS_IN_A_ROW);
     booksListView.setAdapter(booksListAdapter);
     booksListView.setLayoutManager(gridLayoutManager);
+  }
+
+  @Override
+  public void hideWelcomeMessage() {
+    findViewById(R.id.tv_welcome_text).setVisibility(View.GONE);
+  }
+
+  @Override
+  public void showNoResultsFoundMessage() {
+    findViewById(R.id.tv_no_result_found_text).setVisibility(View.VISIBLE);
+  }
+
+  @Override
+  public void hideNoResultsFoundMessage() {
+    findViewById(R.id.tv_no_result_found_text).setVisibility(View.GONE);
+  }
+
+  @Override
+  public void hideSearchResult() {
+    findViewById(R.id.rc_books_list).setVisibility(View.GONE);
   }
 }

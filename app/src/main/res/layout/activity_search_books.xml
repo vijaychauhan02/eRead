@@ -16,19 +16,28 @@
       android:orientation="vertical">
     
     <TextView
-        android:id="@+id/tv_no_result_text"
+        android:id="@+id/tv_welcome_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/welcome_to_read_eread"
+        android:text="@string/welcome_to_eread"
+        android:textSize="18sp"/>
+    
+    <TextView
+        android:id="@+id/tv_no_result_found_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/no_results_found"
         android:textSize="18sp"
         android:visibility="gone"/>
     
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rc_books_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+  
   </LinearLayout>
 
 
