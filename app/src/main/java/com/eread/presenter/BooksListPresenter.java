@@ -2,9 +2,9 @@ package com.eread.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.eread.view.SearchBooksViewCallBack;
 import com.eread.model.SearchBooksResponse;
 import com.eread.services.EReadServices;
+import com.eread.view.SearchBooksViewCallBack;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,10 +22,11 @@ public class BooksListPresenter {
 
   public void searchBooks(String searchQuery) {
 
+    searchBooksViewCallBack.hideWelcomeMessage();
+    searchBooksViewCallBack.showProgressDialog();
+
     Call<SearchBooksResponse> call = service.searchBooks(searchQuery);
-
     call.enqueue(getSearchBookResponseCallBack());
-
   }
 
   @NonNull
@@ -33,18 +34,21 @@ public class BooksListPresenter {
     return new Callback<SearchBooksResponse>() {
       @Override
       public void onResponse(Call<SearchBooksResponse> call, Response<SearchBooksResponse> response) {
-//        Log.e("title is ", response.body().getBooks().get(0).getVolumeInfo().getTitle());
         renderTheSearchResponse(response.body());
       }
 
       @Override
       public void onFailure(Call<SearchBooksResponse> call, Throwable t) {
+        handleFailureSearchResponse();
       }
     };
   }
 
+  private void handleFailureSearchResponse() {
+    searchBooksViewCallBack.hideProgressDialog();
+  }
+
   private void renderTheSearchResponse(SearchBooksResponse response) {
-    searchBooksViewCallBack.hideWelcomeMessage();
     if (response.getTotalBooks() == 0) {
       searchBooksViewCallBack.hideSearchResult();
       searchBooksViewCallBack.showNoResultsFoundMessage();
@@ -52,5 +56,6 @@ public class BooksListPresenter {
       searchBooksViewCallBack.hideNoResultsFoundMessage();
       searchBooksViewCallBack.renderBooks(response);
     }
+    searchBooksViewCallBack.hideProgressDialog();
   }
 }

@@ -3,5 +3,6 @@
   <string name="welcome_to_eread">Welcome to eRead</string>
   <string name="search_box_hint">Enter author name</string>
   <string name="no_results_found">No Result Found</string>
+  <string name="please_wait">Please wait</string>
 </resources>
 

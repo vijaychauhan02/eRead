@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 
+import com.eread.ProgressDialog;
 import com.eread.R;
 import com.eread.model.SearchBooksResponse;
 import com.eread.presenter.BooksListPresenter;
@@ -61,5 +62,15 @@ public class SearchBooksActivity extends AppCompatActivity implements SearchBook
   @Override
   public void hideSearchResult() {
     findViewById(R.id.rc_books_list).setVisibility(View.GONE);
+  }
+
+  @Override
+  public void showProgressDialog() {
+    ProgressDialog.show(this);
+  }
+
+  @Override
+  public void hideProgressDialog() {
+    ProgressDialog.dismissDialog();
   }
 }

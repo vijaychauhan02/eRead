@@ -12,4 +12,8 @@ public interface SearchBooksViewCallBack {
   void hideNoResultsFoundMessage();
 
   void hideSearchResult();
+
+  void showProgressDialog();
+
+  void hideProgressDialog();
 }
