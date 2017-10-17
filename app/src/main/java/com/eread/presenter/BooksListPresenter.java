@@ -34,21 +34,21 @@ public class BooksListPresenter {
     return new Callback<SearchBooksResponse>() {
       @Override
       public void onResponse(Call<SearchBooksResponse> call, Response<SearchBooksResponse> response) {
-        renderTheSearchResponse(response.body());
+        handleSearchSucessResponse(response.body());
       }
 
       @Override
       public void onFailure(Call<SearchBooksResponse> call, Throwable t) {
-        handleFailureSearchResponse();
+        handleSearchFailure();
       }
     };
   }
 
-  private void handleFailureSearchResponse() {
+  private void handleSearchFailure() {
     searchBooksViewCallBack.hideProgressDialog();
   }
 
-  private void renderTheSearchResponse(SearchBooksResponse response) {
+  private void handleSearchSucessResponse(SearchBooksResponse response) {
     if (response.getTotalBooks() == 0) {
       searchBooksViewCallBack.hideSearchResult();
       searchBooksViewCallBack.showNoResultsFoundMessage();
