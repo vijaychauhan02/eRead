@@ -1,11 +1,17 @@
 package com.eread.view;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
-import android.widget.EditText;
 
 import com.eread.ProgressDialog;
 import com.eread.R;
@@ -25,13 +31,14 @@ public class SearchBooksActivity extends AppCompatActivity implements SearchBook
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search_books);
 
+    setToolbar();
+
     booksListPresenter = new BooksListPresenter(EReadServiceGenerator.createService(), this);
   }
 
-
-  public void searchBooks(View view) {
-    EditText searchEditText = (EditText) findViewById(R.id.et_search_books);
-    booksListPresenter.searchBooks(searchEditText.getText().toString());
+  private void setToolbar() {
+    Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+    setSupportActionBar(toolbar);
   }
 
   @Override
@@ -72,5 +79,33 @@ public class SearchBooksActivity extends AppCompatActivity implements SearchBook
   @Override
   public void hideProgressDialog() {
     ProgressDialog.dismissDialog();
+  }
+
+  @Override
+  protected void onNewIntent(Intent intent) {
+    setIntent(intent);
+    handleIntent();
+  }
+
+  private void handleIntent() {
+    Intent intent = getIntent();
+    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+      String query = intent.getStringExtra(SearchManager.QUERY);
+      booksListPresenter.searchBooks(query);
+    }
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.search_book_activity_actions, menu);
+
+    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+    SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+
+    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+    searchView.setIconifiedByDefault(false);
+
+    return true;
   }
 }
