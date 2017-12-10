@@ -25,6 +25,7 @@ public class SearchBooksActivity extends AppCompatActivity implements SearchBook
 
   BooksListPresenter booksListPresenter;
   public static final int NUM_OF_BOOKS_IN_A_ROW = 2;
+  ProgressDialog progressDialog;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +74,15 @@ public class SearchBooksActivity extends AppCompatActivity implements SearchBook
 
   @Override
   public void showProgressDialog() {
-    ProgressDialog.show(this);
+    if (progressDialog == null) {
+      progressDialog = new ProgressDialog(this);
+    }
+    progressDialog.show();
   }
 
   @Override
   public void hideProgressDialog() {
-    ProgressDialog.dismissDialog();
+    progressDialog.dismissDialog();
   }
 
   @Override
@@ -107,5 +111,11 @@ public class SearchBooksActivity extends AppCompatActivity implements SearchBook
     searchView.setIconifiedByDefault(false);
 
     return true;
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    progressDialog.dismissDialog();
   }
 }
